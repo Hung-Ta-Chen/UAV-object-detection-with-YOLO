@@ -1,11 +1,11 @@
 import glob
-import random
 import os
 import sys
 import warnings
 import numpy as np
 from PIL import Image
 from PIL import ImageFile
+import secrets
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -135,7 +135,7 @@ class ListDataset(Dataset):
 
         # Selects new image size every tenth batch
         if self.multiscale and self.batch_count % 10 == 0:
-            self.img_size = random.choice(range(self.min_size, self.max_size + 1, 32))
+            self.img_size = secrets.SystemRandom().choice(range(self.min_size, self.max_size + 1, 32))
 
         # Resize images to input shape
         imgs = torch.stack([resize(img, self.img_size) for img in imgs])
