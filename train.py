@@ -200,4 +200,4 @@ if __name__ == "__main__":
                 print( "---- mAP not measured (no detections found by model)")
 
         if epoch % opt.checkpoint_interval == 0:
-            torch.save(model.state_dict(), f"checkpoints/yolov3_ckpt_%d.pth" % (epoch + start_point + 1))
+            torch.save(model.state_dict(), "checkpoints/yolov3_ckpt_%d.pth" % (epoch + start_point + 1))

@@ -120,7 +120,7 @@ class ListDataset(Dataset):
             try:
                 img, bb_targets = self.transform((img, boxes))
             except:
-                print(f"Could not apply transform.")
+                print("Could not apply transform.")
                 return
 
         return img_path, img, bb_targets
