@@ -77,7 +77,7 @@ def create_modules(module_defs):
 
         elif module_def["type"] == "route":
             layers = [int(x) for x in module_def["layers"].split(",")]
-            filters = sum([output_filters[1:][i] for i in layers])
+            filters = sum(output_filters[1:][i] for i in layers)
             modules.add_module(f"route_{module_i}", nn.Sequential())
 
         elif module_def["type"] == "shortcut":
