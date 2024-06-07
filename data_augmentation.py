@@ -7,15 +7,15 @@
 import os
 import glob
 import cv2
-import random
 import numpy as np
+import secrets
 
 
 # In[2]:
 
 
 def brightness(img, low, high):
-    value = random.uniform(low, high)
+    value = secrets.SystemRandom().uniform(low, high)
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     hsv = np.array(hsv, dtype = np.float64)
     hsv[:,:,1] = hsv[:,:,1]*value
@@ -36,7 +36,7 @@ def vertical_flip(img, flag):
     else:
         return img
 def rotation(img, angle):
-    angle = int(random.uniform(-angle, angle))
+    angle = int(secrets.SystemRandom().uniform(-angle, angle))
     h, w = img.shape[:2]
     M = cv2.getRotationMatrix2D((int(w/2), int(h/2)), angle, 1)
     img = cv2.warpAffine(img, M, (w, h))
